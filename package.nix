@@ -5,6 +5,7 @@
   pkg-config,
   libxkbcommon,
   wayland,
+  zstd,
   makeWrapper,
   python3,
   openssh,
@@ -44,9 +45,11 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
   ];
 
+  # zstd: nixpkgs' cargo hook has zstd-sys link the system library.
   buildInputs = [
     libxkbcommon
     wayland
+    zstd
   ];
 
   # Builds the wprsc / wprsd / xwayland-xdg-shell bin targets automatically.
